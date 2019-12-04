@@ -122,6 +122,7 @@ class _ExpandableCardState extends State<ExpandableCard>
     print("_onTapCard");
 
     if (!_cardIsExpanded) {
+      print("cardIsNotExpanded");
       _animationScrollPercent =
           Tween<double>(begin: _scrollPercent, end: 0.0).animate(
             CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
@@ -157,7 +158,6 @@ class _ExpandableCardState extends State<ExpandableCard>
         return Positioned(
           top: top,
           child: GestureDetector(
-            onTapDown: _onTapCard2,
             onTap: _onTapCard,
             onVerticalDragStart: _startCardDrag,
             onVerticalDragUpdate: _expandCard,
