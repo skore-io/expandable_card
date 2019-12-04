@@ -125,6 +125,19 @@ class _ExpandableCardState extends State<ExpandableCard>
     }
   }
 
+  void _onTapCard2(TapDownDetails details) {
+    print("_onTapCard2");
+
+    if (!_cardIsExpanded) {
+      _animationScrollPercent =
+          Tween<double>(begin: _scrollPercent, end: 0.0).animate(
+            CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
+          );
+      _animationController.forward();
+      setState(() => _scrollPercent = 0.0);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -138,10 +151,11 @@ class _ExpandableCardState extends State<ExpandableCard>
         return Positioned(
           top: top,
           child: GestureDetector(
+            onTapDown: _onTapCard2,
+            onTap: _onTapCard,
             onVerticalDragStart: _startCardDrag,
             onVerticalDragUpdate: _expandCard,
             onVerticalDragEnd: _endCardDrag,
-            onTap: _onTapCard,
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: widget.maxHeight + 50,
