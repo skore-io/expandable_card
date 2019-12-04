@@ -47,6 +47,8 @@ class _ExpandableCardState extends State<ExpandableCard>
   );
 
   void _startCardDrag(DragStartDetails details) {
+    print("_startCardDrag");
+
     setState(() {
       _isAnimating = false;
     });
@@ -54,6 +56,8 @@ class _ExpandableCardState extends State<ExpandableCard>
   }
 
   void _expandCard(DragUpdateDetails details) {
+    print("_expandCard");
+
     final drag = details.delta.dy;
     if (drag < -0.3 && _scrollPercent < 1) {
       setState(() {
@@ -67,6 +71,8 @@ class _ExpandableCardState extends State<ExpandableCard>
   }
 
   void _endCardDrag(DragEndDetails details) {
+    print("_endCardDrag");
+
     setState(() => _isAnimating = true);
     // BottomCard will animate
     if (!_cardIsExpanded &&
