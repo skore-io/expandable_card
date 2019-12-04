@@ -118,7 +118,7 @@ class _ExpandableCardState extends State<ExpandableCard>
     }
   }
 
-  void expandCard(boolean) {
+  void expandCard() {
     print("expandCard");
 
     if (!_cardIsExpanded) {
