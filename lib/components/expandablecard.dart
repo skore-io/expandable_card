@@ -128,7 +128,10 @@ class _ExpandableCardState extends State<ExpandableCard>
             CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
           );
       _animationController.forward();
-      setState(() => _scrollPercent = 0.0);
+      setState(() {
+        _scrollPercent = 1.0;
+        _cardIsExpanded = true;
+      });
     }
   }
 
