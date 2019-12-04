@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8e94734-ef88-44af-96f7-4d31f8625e30" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/components/expandablecard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/expandablecard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-    </list>
+    <list default="true" id="c8e94734-ef88-44af-96f7-4d31f8625e30" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/components/expandablecard.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="114" column="17" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="17" />
+            <state relative-caret-position="594">
+              <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -51,19 +48,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/animation/tween.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="215" column="2" selection-start-line="215" selection-start-column="2" selection-end-line="215" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/widget_test.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding>
                 <element signature="e#0#1051#0" expanded="true" />
                 <element signature="e#357#396#0" expanded="true" />
@@ -230,7 +218,7 @@
     <entry file="file://$PROJECT_DIR$/test/widget_test.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding>
             <element signature="e#0#1051#0" expanded="true" />
             <element signature="e#357#396#0" expanded="true" />
@@ -263,8 +251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/components/expandablecard.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="114" column="17" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="17" />
+        <state relative-caret-position="594">
+          <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

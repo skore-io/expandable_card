@@ -113,6 +113,8 @@ class _ExpandableCardState extends State<ExpandableCard>
   }
 
   void _onTapCard() {
+    print("_onTapCard");
+
     if (!_cardIsExpanded) {
       _animationScrollPercent =
           Tween<double>(begin: _scrollPercent, end: 0.0).animate(
