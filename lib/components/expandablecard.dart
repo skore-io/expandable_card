@@ -118,27 +118,11 @@ class _ExpandableCardState extends State<ExpandableCard>
     }
   }
 
-  void _onTapCard() {
-    print("_onTapCard");
+  void expandCard() {
+    print("expandCard");
 
     if (!_cardIsExpanded) {
       print("cardIsNotExpanded");
-      _animationScrollPercent =
-          Tween<double>(begin: _scrollPercent, end: 1.0).animate(
-            CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
-          );
-      _animationController.forward();
-      setState(() {
-        _scrollPercent = 1.0;
-        _cardIsExpanded = true;
-      });
-    }
-  }
-
-  void _onTapCard2(TapDownDetails details) {
-    print("_onTapCard2");
-
-    if (!_cardIsExpanded) {
       _animationScrollPercent =
           Tween<double>(begin: _scrollPercent, end: 0.0).animate(
             CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
@@ -161,7 +145,6 @@ class _ExpandableCardState extends State<ExpandableCard>
         return Positioned(
           top: top,
           child: GestureDetector(
-            onTap: _onTapCard,
             onVerticalDragStart: _startCardDrag,
             onVerticalDragUpdate: _expandCard,
             onVerticalDragEnd: _endCardDrag,
