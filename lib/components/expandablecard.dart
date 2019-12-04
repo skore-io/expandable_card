@@ -118,17 +118,19 @@ class _ExpandableCardState extends State<ExpandableCard>
     }
   }
 
-  void expandCard() {
+  void expandCard(boolean) {
     print("expandCard");
 
     if (!_cardIsExpanded) {
-      print("cardIsNotExpanded");
       _animationScrollPercent =
-          Tween<double>(begin: _scrollPercent, end: 0.0).animate(
+          Tween<double>(begin: _scrollPercent, end: 1.0).animate(
             CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
           );
       _animationController.forward();
-      setState(() => _scrollPercent = 0.0);
+      setState(() {
+        _scrollPercent = 1.0;
+        _cardIsExpanded = true;
+      });
     }
   }
 
