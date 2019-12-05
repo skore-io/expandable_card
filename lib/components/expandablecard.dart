@@ -25,7 +25,6 @@ class ExpandableCard extends StatefulWidget {
   _ExpandableCardState _expandableCardState;
 
   void expandCard() {
-    print("test");
     if (_expandableCardState != null) _expandableCardState.expandCard();
   }
 
@@ -48,7 +47,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 3000));
   }
 
   final Widget positionDebugContent = Column(
@@ -56,8 +55,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   );
 
   void _startCardDrag(DragStartDetails details) {
-    print("_startCardDrag");
-
     setState(() {
       _isAnimating = false;
     });
@@ -65,8 +62,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   }
 
   void _expandCard(DragUpdateDetails details) {
-    print("_expandCard");
-
     final drag = details.delta.dy;
     if (drag < -0.3 && _scrollPercent < 1) {
       setState(() {
@@ -80,8 +75,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   }
 
   void _endCardDrag(DragEndDetails details) {
-    print("_endCardDrag");
-
     setState(() => _isAnimating = true);
     // BottomCard will animate
     if (!_cardIsExpanded &&
@@ -128,15 +121,11 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   }
 
   void expandCard() {
-    print("expandCard");
-
     if (!_cardIsExpanded) {
       _animationController.duration = Duration(seconds: 2);
 
       _animationScrollPercent =
-          Tween<double>(begin: _scrollPercent, end: 1.0).animate(
-            CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
-          );
+          Tween<double>(begin: _scrollPercent, end: 1.0).animate(CurvedAnimation(parent: _animationController, curve: _bounceOutCurve));
 
       _animationController.forward();
 //      _animationController.duration = Duration(milliseconds: 300);
