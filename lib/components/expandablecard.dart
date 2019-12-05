@@ -22,12 +22,21 @@ class ExpandableCard extends StatefulWidget {
   final bool hasRoundedCorners;
   final Color backgroundColor;
 
+  _ExpandableCardState _expandableCardState;
+
+  void expandCard() {
+    print("test");
+    if (_expandableCardState != null) _expandableCardState.expandCard();
+  }
+
   @override
-  _ExpandableCardState createState() => _ExpandableCardState();
+  _ExpandableCardState createState() {
+    _expandableCardState = _ExpandableCardState();
+    return _expandableCardState;
+  }
 }
 
-class _ExpandableCardState extends State<ExpandableCard>
-    with SingleTickerProviderStateMixin {
+class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation<double> _animationScrollPercent;
   bool _isAnimating = false;
