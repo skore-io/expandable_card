@@ -128,8 +128,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
       _animationController.forward();
 //      _animationController.duration = Duration(milliseconds: 300);
+
       setState(() {
-        _scrollPercent = 1.0;
         _cardIsExpanded = true;
       });
     }
