@@ -45,8 +45,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
   }
 
   final Widget positionDebugContent = Column(
@@ -76,10 +75,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   void _endCardDrag(DragEndDetails details) {
     setState(() => _isAnimating = true);
     // BottomCard will animate
-    if (!_cardIsExpanded &&
-        (details.primaryVelocity < -500 || _scrollPercent > 0.6)) {
-      _animationScrollPercent =
-          Tween<double>(begin: _scrollPercent, end: 1.0).animate(
+    if (!_cardIsExpanded && (details.primaryVelocity < -500 || _scrollPercent > 0.6)) {
+      _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 1.0).animate(
         CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
       );
       _animationController.forward();
@@ -87,10 +84,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         _scrollPercent = 1.0;
         _cardIsExpanded = true;
       });
-    } else if (_cardIsExpanded &&
-        (details.primaryVelocity > 200 || _scrollPercent < 0.6)) {
-      _animationScrollPercent =
-          Tween<double>(begin: _scrollPercent, end: 0.0).animate(
+    } else if (_cardIsExpanded && (details.primaryVelocity > 200 || _scrollPercent < 0.6)) {
+      _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 0.0).animate(
         CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
       );
       _animationController.forward();
@@ -102,15 +97,13 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     // Card Slider will not expand
     else {
       if (_cardIsExpanded) {
-        _animationScrollPercent =
-            Tween<double>(begin: _scrollPercent, end: 1.0).animate(
+        _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 1.0).animate(
           CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
         );
         _animationController.forward();
         setState(() => _scrollPercent = 1.0);
       } else {
-        _animationScrollPercent =
-            Tween<double>(begin: _scrollPercent, end: 0.0).animate(
+        _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 0.0).animate(
           CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
         );
         _animationController.forward();
@@ -121,16 +114,17 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
   void expandCard() {
     if (!_cardIsExpanded) {
+      setState(() => _isAnimating = true);
+
       _animationController.duration = Duration(seconds: 2);
 
-      _animationScrollPercent =
-          Tween<double>(begin: _scrollPercent, end: 1.0).animate(
-              CurvedAnimation(parent: _animationController, curve: Curves.bounceInOut)
-          );
+      _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 1.0).animate(
+        CurvedAnimation(parent: _animationController, curve: Curves.bounceInOut),
+      );
 
       _animationController.forward();
 
-      _cardIsExpanded = true;
+      setState(() => _cardIsExpanded = true);
     }
   }
 
@@ -139,11 +133,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     return AnimatedBuilder(
       animation: _animationController,
       builder: (context, child) {
-        double factor =
-            _isAnimating ? _animationScrollPercent.value : _scrollPercent;
-        double top = MediaQuery.of(context).size.height -
-            widget.minHeight -
-            (widget.maxHeight - widget.minHeight) * factor;
+        double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
+        double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
         return Positioned(
           top: top,
           child: GestureDetector(
@@ -173,11 +164,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
               child: Padding(
                 padding: widget.padding,
                 child: Column(
-                  children: <Widget>[
-                    if (widget.hasHandle) Handle(),
-                    SizedBox(height: 10),
-                    ...widget.children
-                  ],
+                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...widget.children],
                 ),
               ),
             ),
