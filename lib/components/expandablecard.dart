@@ -131,11 +131,15 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     print("expandCard");
 
     if (!_cardIsExpanded) {
+      _animationController.duration = Duration(seconds: 2);
+
       _animationScrollPercent =
           Tween<double>(begin: _scrollPercent, end: 1.0).animate(
-            CurvedAnimation(parent: AnimationController(vsync: this, duration: Duration(seconds: 2)), curve: _bounceOutCurve),
+            CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
           );
+
       _animationController.forward();
+//      _animationController.duration = Duration(milliseconds: 300);
       setState(() {
         _scrollPercent = 1.0;
         _cardIsExpanded = true;
