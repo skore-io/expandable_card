@@ -22,15 +22,14 @@ class ExpandableCard extends StatefulWidget {
   final bool hasRoundedCorners;
   final Color backgroundColor;
 
-  _ExpandableCardState _expandableCardState;
+  final _ExpandableCardState _expandableCardState = new _ExpandableCardState();
 
   void expandCard() {
-    if (_expandableCardState != null) _expandableCardState.expandCard();
+    _expandableCardState.expandCard();
   }
 
   @override
   _ExpandableCardState createState() {
-    _expandableCardState = _ExpandableCardState();
     return _expandableCardState;
   }
 }
@@ -47,7 +46,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 3000));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
   }
 
   final Widget positionDebugContent = Column(
