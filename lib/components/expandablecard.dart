@@ -129,9 +129,9 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
           );
 
       _animationController.forward();
-    }
 
-    _cardIsExpanded = true;
+      _cardIsExpanded = true;
+    }
   }
 
   @override
