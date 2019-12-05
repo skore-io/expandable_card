@@ -114,17 +114,32 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
   void expandCard() {
     if (!_cardIsExpanded) {
-
       setState(() => _isAnimating = true);
 
       _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 1.0).animate(
-        CurvedAnimation(parent: _animationController, curve: Curves.bounceInOut),
+        CurvedAnimation(parent: _animationController, curve: _bounceOutCurve),
       );
 
       _animationController.forward();
 
-      setState(() => _cardIsExpanded = true);
+      setState(() {
+        _scrollPercent = 1.0;
+        _cardIsExpanded = true;
+      });
     }
+
+//    if (!_cardIsExpanded) {
+//
+//      setState(() => _isAnimating = true);
+//
+//      _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 1.0).animate(
+//        CurvedAnimation(parent: _animationController, curve: Curves.bounceInOut),
+//      );
+//
+//      _animationController.forward();
+//
+//      setState(() => _cardIsExpanded = true);
+//    }
   }
 
   @override
