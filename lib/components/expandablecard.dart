@@ -114,9 +114,9 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
   void expandCard() {
     if (!_cardIsExpanded) {
-      setState(() {
+//      setState(() {
         _isAnimating = false;
-      });
+//      });
       _animationController.reset();
 
       setState(() => _isAnimating = true);
@@ -127,10 +127,10 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
       _animationController.forward();
 
-      setState(() {
+//      setState(() {
         _scrollPercent = 1.0;
         _cardIsExpanded = true;
-      });
+//      });
     }
 
 //    if (!_cardIsExpanded) {
