@@ -29,7 +29,7 @@ class ExpandableCard extends StatefulWidget {
   }
 
   @override
-  _ExpandableCardState createState() {
+  State<ExpandableCard> createState() {
     print("ExpandableCard::createState");
     return _expandableCardState;
   }
