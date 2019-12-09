@@ -22,7 +22,7 @@ class ExpandableCard extends StatefulWidget {
   final bool hasRoundedCorners;
   final Color backgroundColor;
 
-  _ExpandableCardState _expandableCardState = null;
+  final _ExpandableCardState _expandableCardState = new _ExpandableCardState();
 
   void expandCard() {
     _expandableCardState.expandCard();
@@ -30,7 +30,7 @@ class ExpandableCard extends StatefulWidget {
 
   @override
   _ExpandableCardState createState() {
-    _expandableCardState = new _ExpandableCardState();
+    print("ExpandableCard::createState");
     return _expandableCardState;
   }
 }
