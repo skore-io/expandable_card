@@ -113,10 +113,14 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   }
 
   void expandCard() {
-    print("antes");
-    if (mounted && !_cardIsExpanded) {
-      print("dps");
 
+    if (mounted) {
+      print("mounted = true");
+    } else {
+      print("mounted = false");
+    }
+
+    if (mounted && !_cardIsExpanded) {
       setState(() => _isAnimating = false);
 
       _animationController.reset();
