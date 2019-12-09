@@ -22,7 +22,7 @@ class ExpandableCard extends StatefulWidget {
   final bool hasRoundedCorners;
   final Color backgroundColor;
 
-  final _ExpandableCardState _expandableCardState = new _ExpandableCardState();
+  _ExpandableCardState _expandableCardState = null;
 
   void expandCard() {
     _expandableCardState.expandCard();
@@ -30,6 +30,7 @@ class ExpandableCard extends StatefulWidget {
 
   @override
   _ExpandableCardState createState() {
+    _expandableCardState = new _ExpandableCardState();
     return _expandableCardState;
   }
 }
@@ -113,7 +114,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   }
 
   void expandCard() {
-
     if (mounted) {
       print("mounted = true");
     } else {
