@@ -41,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/components/expandablecard.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+            <state relative-caret-position="3686">
+              <caret line="194" column="67" selection-start-line="194" selection-start-column="67" selection-end-line="194" selection-end-column="67" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -64,6 +64,8 @@
       <find>mount</find>
       <find>createState</find>
       <find>_startCardDrag</find>
+      <find>new</find>
+      <find>buildContext</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -263,13 +265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/widgets/framework.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="975" column="22" selection-start-line="975" selection-start-column="17" selection-end-line="975" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../flutter/bin/cache/pkg/sky_engine/lib/core/print.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -277,10 +272,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/widgets/framework.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="936" column="20" selection-start-line="936" selection-start-column="15" selection-end-line="936" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/components/expandablecard.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        <state relative-caret-position="3686">
+          <caret line="194" column="67" selection-start-line="194" selection-start-column="67" selection-end-line="194" selection-end-column="67" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

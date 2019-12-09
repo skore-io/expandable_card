@@ -22,7 +22,7 @@ class ExpandableCard extends StatefulWidget {
   final bool hasRoundedCorners;
   final Color backgroundColor;
 
-  final _ExpandableCardState _expandableCardState = new _ExpandableCardState();
+  final _ExpandableCardState _expandableCardState = _ExpandableCardState();
 
   void expandCard() {
     _expandableCardState.expandCard();
@@ -157,8 +157,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 //    }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  @override Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
       builder: (context, child) {
@@ -205,6 +204,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
   @override
   void dispose() {
+    print("ExpandableCard::dispose");
     _animationController.dispose();
     super.dispose();
   }
