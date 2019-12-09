@@ -28,9 +28,7 @@ class ExpandableCard extends StatefulWidget {
     _expandableCardState.expandCard();
   }
 
-  @override
-  State<ExpandableCard> createState() {
-    print("ExpandableCard::createState");
+  @override State<ExpandableCard> createState() {
     return _expandableCardState;
   }
 }
