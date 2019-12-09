@@ -52,6 +52,12 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   );
 
   void _startCardDrag(DragStartDetails details) {
+    if (mounted) {
+      print("mounted = true");
+    } else {
+      print("mounted = false");
+    }
+
     setState(() {
       _isAnimating = false;
     });
