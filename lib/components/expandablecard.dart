@@ -156,6 +156,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
           tabList.map((item){
             return GestureDetector(onTap: _onTapEvent, child: item);
           }).toList();
+          print(tabList);
           break;
         }
       }
