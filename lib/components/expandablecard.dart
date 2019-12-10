@@ -152,7 +152,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
       for (int i = 0; i < widgetList.length; ++i) {
         if (widgetList[i] is ToolbarPlayer){
           newWidgetList.add(GestureDetector(onTap: _onTapEvent, child: widgetList[i]));
-          break;
+        } else {
+          newWidgetList.add(widgetList[i]);
         }
       }
 
