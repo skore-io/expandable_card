@@ -146,14 +146,17 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
         double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
 
-      List<Widget> newWidgetList = List();
+      // List<Widget> newWidgetList = List();
       List<Widget> widgetList = widget.children;
 
       for (int i = 0; i < widgetList.length; ++i) {
         if (widgetList[i] is ToolbarPlayer){
-          newWidgetList.add(GestureDetector(onTap: _onTapEvent, child: widgetList[i]));
-        } else {
-          newWidgetList.add(widgetList[i]);
+          ToolbarPlayer toolbarPlayer = widgetList[i] as ToolbarPlayer;
+          List<Widget> tabList = toolbarPlayer.tabList;
+          tabList.map((item){
+            return GestureDetector(onTap: _onTapEvent, child: item);
+          }).toList();
+          break;
         }
       }
 
@@ -186,7 +189,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
               child: Padding(
                 padding: widget.padding,
                 child: Column(
-                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...newWidgetList],
+                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...widgetList],
                 ),
               ),
             ),
