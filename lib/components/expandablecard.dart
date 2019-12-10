@@ -151,6 +151,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         GestureDetector gestureDetector;
 
         for (int i = 0; i < widgetList.length; ++i) {
+          if (widgetList[i] is Expanded) break;
           // TODO insert some retard if shit here
           gestureDetector = GestureDetector(onTap: _onTapEvent, child: widgetList[i]);
           newWidgetList.add(gestureDetector);
