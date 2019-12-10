@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:sliding_card/components/toolbar_player.dart';
 
 class ExpandableCard extends StatefulWidget {
   ExpandableCard({
@@ -145,20 +146,15 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
         double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
 
-//        List<Widget> newWidgetList = List();
-        List<Widget> widgetList = widget.children;
+      List<Widget> newWidgetList = List();
+      List<Widget> widgetList = widget.children;
 
-//        GestureDetector gestureDetector;
-
-        widgetList[0] = GestureDetector(onTap: _onTapEvent, child: widgetList[0]);
-
-//        for (int i = 0; i < widgetList.length; ++i) {
-//          if (widgetList[i] is ToolbarPlayer) break;
-//
-//          // TODO insert some retard if shit here
-//          gestureDetector = GestureDetector(onTap: _onTapEvent, child: widgetList[i]);
-//          newWidgetList.add(gestureDetector);
-//        }
+      for (int i = 0; i < widgetList.length; ++i) {
+        if (widgetList[i] is ToolbarPlayer){
+          newWidgetList.add(GestureDetector(onTap: _onTapEvent, child: widgetList[i]));
+          break;
+        }
+      }
 
         return Positioned(
           top: top,
@@ -189,7 +185,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
               child: Padding(
                 padding: widget.padding,
                 child: Column(
-                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...widgetList],
+                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...newWidgetList],
                 ),
               ),
             ),
