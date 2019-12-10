@@ -53,9 +53,9 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
   void _startCardDrag(DragStartDetails details) {
     if (mounted) {
-      print("mounted = true");
+      print("_startCardDrag::mounted = true");
     } else {
-      print("mounted = false");
+      print("_startCardDrag::mounted = false");
     }
 
     setState(() {
