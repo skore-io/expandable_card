@@ -22,14 +22,9 @@ class ExpandableCard extends StatefulWidget {
   final bool hasRoundedCorners;
   final Color backgroundColor;
 
-  final _ExpandableCardState _expandableCardState = _ExpandableCardState();
-
-  void expandCard() {
-    _expandableCardState.expandCard();
-  }
-
-  @override State<ExpandableCard> createState() {
-    return _expandableCardState;
+  @override
+  State<ExpandableCard> createState() {
+    return _ExpandableCardState();
   }
 }
 
@@ -52,6 +47,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   );
 
   void _startCardDrag(DragStartDetails details) {
+    Type runtimeType = details.runtimeType;
+
     if (mounted) {
       print("_startCardDrag::mounted = true");
     } else {
@@ -117,12 +114,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     }
   }
 
-  void expandCard() {
-    if (mounted) {
-      print("mounted = true");
-    } else {
-      print("mounted = false");
-    }
+  void _onTapEvent() {
+    print("nothing :)");
 
     if (mounted && !_cardIsExpanded) {
       setState(() => _isAnimating = false);
@@ -142,27 +135,27 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         _cardIsExpanded = true;
       });
     }
-
-//    if (!_cardIsExpanded) {
-//
-//      setState(() => _isAnimating = true);
-//
-//      _animationScrollPercent = Tween<double>(begin: _scrollPercent, end: 1.0).animate(
-//        CurvedAnimation(parent: _animationController, curve: Curves.bounceInOut),
-//      );
-//
-//      _animationController.forward();
-//
-//      setState(() => _cardIsExpanded = true);
-//    }
   }
 
-  @override Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
       builder: (context, child) {
         double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
         double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
+
+        List<Widget> newWidgetList = List();
+        List<Widget> widgetList = widget.children;
+
+        GestureDetector gestureDetector;
+
+        for (int i = 0; i < widgetList.length; ++i) {
+          // TODO insert some retard if shit here
+          gestureDetector = GestureDetector(onTap: _onTapEvent, child: widgetList[i]);
+          newWidgetList.add(gestureDetector);
+        }
+
         return Positioned(
           top: top,
           child: GestureDetector(
@@ -192,7 +185,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
               child: Padding(
                 padding: widget.padding,
                 child: Column(
-                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...widget.children],
+                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...newWidgetList],
                 ),
               ),
             ),
