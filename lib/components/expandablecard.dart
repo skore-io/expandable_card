@@ -64,14 +64,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   );
 
   void _startCardDrag(DragStartDetails details) {
-    Type runtimeType = details.runtimeType;
-
-    if (mounted) {
-      print("_startCardDrag::mounted = true");
-    } else {
-      print("_startCardDrag::mounted = false");
-    }
-
     setState(() {
       _isAnimating = false;
     });
@@ -132,9 +124,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
   }
 
   void _onTapEvent() {
-    print("nothing :)");
-
-    if (mounted && !_cardIsExpanded) {
+    if (!_cardIsExpanded) {
       setState(() => _isAnimating = false);
 
       _animationController.reset();
@@ -154,19 +144,20 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     }
   }
 
-  List<Widget> widgetList(){
+  List<Widget> widgetList() {
     List<Widget> list = widget.children.sublist(0);
-    list.insert(0,ToolbarPlayer(
-        toolbarPageViewController: widget.toolbarPageViewController,
-        hasQuestions: widget.hasQuestions,
-        tabList: widget.tabList,
-        primaryColor: widget.primaryColor,
-        outFavorite: widget.outFavorite,
-        onLikedPress: widget.onLikedPress,
-        onBookmarkPress: widget.onBookmarkPress,
-        outBookmark: widget.outBookmark,
-        onTapEvent: _onTapEvent
-      ));
+    list.insert(
+        0,
+        ToolbarPlayer(
+            toolbarPageViewController: widget.toolbarPageViewController,
+            hasQuestions: widget.hasQuestions,
+            tabList: widget.tabList,
+            primaryColor: widget.primaryColor,
+            outFavorite: widget.outFavorite,
+            onLikedPress: widget.onLikedPress,
+            onBookmarkPress: widget.onBookmarkPress,
+            outBookmark: widget.outBookmark,
+            onTapEvent: _onTapEvent));
     return list;
   }
 
@@ -177,21 +168,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
       builder: (context, child) {
         double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
         double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
-
-      // List<Widget> newWidgetList = List();
-      // for (int i = 0; i < widgetList.length; ++i) {
-      //   if (widgetList[i] is ToolbarPlayer){
-      //     ToolbarPlayer toolbarPlayer = widgetList[i] as ToolbarPlayer;
-      //     List<Widget> tabList = toolbarPlayer.tabList;
-
-      //     for (int j = 0; j < tabList.length; ++j){
-      //       tabList[j] = GestureDetector(onTap: _onTapEvent, child: tabList[j]);
-      //     }
-      //     print(tabList);
-      //     break;
-      //   }
-      // }
-
         return Positioned(
           top: top,
           child: GestureDetector(
@@ -221,11 +197,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
               child: Padding(
                 padding: widget.padding,
                 child: Column(
-                  children: <Widget>[
-                    if (widget.hasHandle) Handle(),
-                    SizedBox(height: 10),
-                    ...widgetList()
-                  ],
+                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...widgetList()],
                 ),
               ),
             ),
@@ -237,13 +209,10 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
 
   @override
   void dispose() {
-    print("ExpandableCard::dispose");
     _animationController.dispose();
     super.dispose();
   }
 }
-
-
 
 class Handle extends StatelessWidget {
   @override
