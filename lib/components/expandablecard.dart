@@ -154,17 +154,9 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animationController,
-      builder: (context, child) {
-        double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
-        double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
-
-      // List<Widget> newWidgetList = List();
-      List<Widget> widgetList = widget.children;
-      widgetList.insert(0, ToolbarPlayer(
+  List<Widget> widgetList(){
+    List<Widget> list = widget.children.sublist(0);
+    list.insert(0,ToolbarPlayer(
         toolbarPageViewController: widget.toolbarPageViewController,
         hasQuestions: widget.hasQuestions,
         tabList: widget.tabList,
@@ -175,7 +167,18 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         outBookmark: widget.outBookmark,
         onTapEvent: _onTapEvent
       ));
+    return list;
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (context, child) {
+        double factor = _isAnimating ? _animationScrollPercent.value : _scrollPercent;
+        double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
+
+      // List<Widget> newWidgetList = List();
       // for (int i = 0; i < widgetList.length; ++i) {
       //   if (widgetList[i] is ToolbarPlayer){
       //     ToolbarPlayer toolbarPlayer = widgetList[i] as ToolbarPlayer;
@@ -184,7 +187,6 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
       //     for (int j = 0; j < tabList.length; ++j){
       //       tabList[j] = GestureDetector(onTap: _onTapEvent, child: tabList[j]);
       //     }
-          
       //     print(tabList);
       //     break;
       //   }
@@ -222,7 +224,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
                   children: <Widget>[
                     if (widget.hasHandle) Handle(),
                     SizedBox(height: 10),
-                    ...widgetList
+                    ...widgetList()
                   ],
                 ),
               ),
