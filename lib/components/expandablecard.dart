@@ -12,6 +12,14 @@ class ExpandableCard extends StatefulWidget {
     this.backgroundColor = Colors.blueGrey,
     this.hasRoundedCorners = false,
     this.hasHandle = true,
+    this.toolbarPageViewController,
+    this.hasQuestions = false,
+    this.tabList,
+    this.primaryColor,
+    this.outFavorite,
+    this.onLikedPress,
+    this.onBookmarkPress,
+    this.outBookmark,
   });
 
   final List<Widget> children;
@@ -22,6 +30,14 @@ class ExpandableCard extends StatefulWidget {
   final bool hasShadow;
   final bool hasRoundedCorners;
   final Color backgroundColor;
+  final PageController toolbarPageViewController;
+  final bool hasQuestions;
+  final List<Widget> tabList;
+  final Color primaryColor;
+  final Stream<bool> outFavorite;
+  final VoidCallback onLikedPress;
+  final Stream<bool> outBookmark;
+  final VoidCallback onBookmarkPress;
 
   @override
   State<ExpandableCard> createState() {
@@ -147,21 +163,21 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
 
       // List<Widget> newWidgetList = List();
-      List<Widget> widgetList = widget.children;
+      // List<Widget> widgetList = widget.children;
 
-      for (int i = 0; i < widgetList.length; ++i) {
-        if (widgetList[i] is ToolbarPlayer){
-          ToolbarPlayer toolbarPlayer = widgetList[i] as ToolbarPlayer;
-          List<Widget> tabList = toolbarPlayer.tabList;
+      // for (int i = 0; i < widgetList.length; ++i) {
+      //   if (widgetList[i] is ToolbarPlayer){
+      //     ToolbarPlayer toolbarPlayer = widgetList[i] as ToolbarPlayer;
+      //     List<Widget> tabList = toolbarPlayer.tabList;
 
-          for (int j = 0; j < tabList.length; ++j){
-            tabList[j] = GestureDetector(onTap: _onTapEvent, child: tabList[j]);
-          }
+      //     for (int j = 0; j < tabList.length; ++j){
+      //       tabList[j] = GestureDetector(onTap: _onTapEvent, child: tabList[j]);
+      //     }
           
-          print(tabList);
-          break;
-        }
-      }
+      //     print(tabList);
+      //     break;
+      //   }
+      // }
 
         return Positioned(
           top: top,
@@ -192,7 +208,22 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
               child: Padding(
                 padding: widget.padding,
                 child: Column(
-                  children: <Widget>[if (widget.hasHandle) Handle(), SizedBox(height: 10), ...widgetList],
+                  children: <Widget>[
+                    if (widget.hasHandle) Handle(),
+                    SizedBox(height: 10),
+                    ToolbarPlayer(
+                      toolbarPageViewController: widget.toolbarPageViewController,
+                      hasQuestions: widget.hasQuestions,
+                      tabList: widget.tabList,
+                      primaryColor: widget.primaryColor,
+                      outFavorite: widget.outFavorite,
+                      onLikedPress: widget.onLikedPress,
+                      onBookmarkPress: widget.onBookmarkPress,
+                      outBookmark: widget.outBookmark,
+                      onTapEvent: _onTapEvent
+                    )
+                    // ...widgetList
+                  ],
                 ),
               ),
             ),
@@ -209,6 +240,8 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
     super.dispose();
   }
 }
+
+
 
 class Handle extends StatelessWidget {
   @override

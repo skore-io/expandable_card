@@ -9,6 +9,7 @@ class ToolbarPlayer extends StatefulWidget {
   final VoidCallback onLikedPress;
   final Stream<bool> outBookmark;
   final VoidCallback onBookmarkPress;
+  final VoidCallback onTapEvent;
 
   ToolbarPlayer({
     this.toolbarPageViewController, 
@@ -18,7 +19,8 @@ class ToolbarPlayer extends StatefulWidget {
     this.outFavorite,
     this.onLikedPress,
     this.onBookmarkPress,
-    this.outBookmark
+    this.outBookmark,
+    this.onTapEvent
   });
 
   @override
@@ -47,6 +49,7 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
         controller: tabController,
         onTap: (index) {
           widget.toolbarPageViewController.animateToPage(index, duration: Duration(seconds: 1), curve: Curves.easeOutCirc);
+          widget.onTapEvent();
         },
         // tabs: widget.hasQuestions ? <Widget>[Tab(text: 'Activities'), Tab(text: 'Comments')] : <Widget>[Tab(text: 'Comments')],
         tabs: widget.tabList
