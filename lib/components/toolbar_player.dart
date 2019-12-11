@@ -12,8 +12,8 @@ class ToolbarPlayer extends StatefulWidget {
   final VoidCallback onTapEvent;
 
   ToolbarPlayer({
-    this.toolbarPageViewController, 
-    this.hasQuestions = false, 
+    this.toolbarPageViewController,
+    this.hasQuestions = false,
     this.tabList,
     this.primaryColor,
     this.outFavorite,

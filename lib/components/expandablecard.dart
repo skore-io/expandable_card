@@ -163,7 +163,18 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         double top = MediaQuery.of(context).size.height - widget.minHeight - (widget.maxHeight - widget.minHeight) * factor;
 
       // List<Widget> newWidgetList = List();
-      // List<Widget> widgetList = widget.children;
+      List<Widget> widgetList = widget.children;
+      widgetList.insert(0, ToolbarPlayer(
+        toolbarPageViewController: widget.toolbarPageViewController,
+        hasQuestions: widget.hasQuestions,
+        tabList: widget.tabList,
+        primaryColor: widget.primaryColor,
+        outFavorite: widget.outFavorite,
+        onLikedPress: widget.onLikedPress,
+        onBookmarkPress: widget.onBookmarkPress,
+        outBookmark: widget.outBookmark,
+        onTapEvent: _onTapEvent
+      ));
 
       // for (int i = 0; i < widgetList.length; ++i) {
       //   if (widgetList[i] is ToolbarPlayer){
@@ -211,18 +222,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
                   children: <Widget>[
                     if (widget.hasHandle) Handle(),
                     SizedBox(height: 10),
-                    ToolbarPlayer(
-                      toolbarPageViewController: widget.toolbarPageViewController,
-                      hasQuestions: widget.hasQuestions,
-                      tabList: widget.tabList,
-                      primaryColor: widget.primaryColor,
-                      outFavorite: widget.outFavorite,
-                      onLikedPress: widget.onLikedPress,
-                      onBookmarkPress: widget.onBookmarkPress,
-                      outBookmark: widget.outBookmark,
-                      onTapEvent: _onTapEvent
-                    )
-                    // ...widgetList
+                    ...widgetList
                   ],
                 ),
               ),

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/danilo/Documents/repos/expandable_card/build/app/intermediates/res/merged/debug/values_values.arsc.flat",
+            "outputFile": "/Users/felipeszulcsewski/Documents/expandable_card/build/app/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/danilo/Documents/repos/expandable_card/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/felipeszulcsewski/Documents/expandable_card/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

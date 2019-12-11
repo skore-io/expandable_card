@@ -1,4 +1,4 @@
-#Tue Dec 10 17:28:58 BRST 2019
-base.0=/Users/danilo/Documents/repos/expandable_card/build/app/intermediates/transforms/dexMerger/debug/0
+#Wed Dec 11 14:26:38 BRST 2019
+base.0=/Users/felipeszulcsewski/Documents/expandable_card/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
