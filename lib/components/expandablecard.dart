@@ -20,6 +20,8 @@ class ExpandableCard extends StatefulWidget {
     this.onLikedPress,
     this.onBookmarkPress,
     this.outBookmark,
+    this.hasDownload,
+    this.onDownloadPress
   });
 
   final List<Widget> children;
@@ -38,6 +40,8 @@ class ExpandableCard extends StatefulWidget {
   final VoidCallback onLikedPress;
   final Stream<bool> outBookmark;
   final VoidCallback onBookmarkPress;
+  final Stream<bool> hasDownload;
+  final VoidCallback onDownloadPress;
 
   @override
   State<ExpandableCard> createState() {
@@ -157,7 +161,9 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
             onLikedPress: widget.onLikedPress,
             onBookmarkPress: widget.onBookmarkPress,
             outBookmark: widget.outBookmark,
-            onTapEvent: _onTapEvent));
+            onTapEvent: _onTapEvent,
+            hasDownload: widget.hasDownload,
+            onDownloadPress: widget.onDownloadPress));
     return list;
   }
 

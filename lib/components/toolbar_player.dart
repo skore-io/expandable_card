@@ -10,6 +10,8 @@ class ToolbarPlayer extends StatefulWidget {
   final Stream<bool> outBookmark;
   final VoidCallback onBookmarkPress;
   final VoidCallback onTapEvent;
+  final Stream<bool> hasDownload;
+  final VoidCallback onDownloadPress;
 
   ToolbarPlayer({
     this.toolbarPageViewController,
@@ -20,7 +22,9 @@ class ToolbarPlayer extends StatefulWidget {
     this.onLikedPress,
     this.onBookmarkPress,
     this.outBookmark,
-    this.onTapEvent
+    this.onTapEvent,
+    this.hasDownload,
+    this.onDownloadPress
   });
 
   @override
@@ -70,6 +74,18 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
         Expanded(child: tabMenu()),
         Row(
           children: <Widget>[
+            StreamBuilder<bool>(
+              stream: widget.hasDownload,
+              builder: (context, AsyncSnapshot<bool> snapshot) {
+                if (!snapshot.hasData) {
+                  return SizedBox();
+                }
+                return IconButton(
+                    onPressed: widget.onDownloadPress,
+                    iconSize: 30,
+                    icon: Icon(Icons.file_download, color: getColor(snapshot)));
+              },
+            ),
             StreamBuilder<bool>(
               stream: widget.outFavorite,
               builder: (context, AsyncSnapshot<bool> snapshot) {
