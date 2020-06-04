@@ -77,7 +77,10 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
             StreamBuilder<bool>(
               stream: widget.hasDownload,
               builder: (context, AsyncSnapshot<bool> snapshot) {
-                if (!snapshot.hasData || !snapshot.data) {
+                if (!snapshot.hasData) {
+                  return SizedBox();
+                }
+                if (!snapshot.data){
                   return SizedBox();
                 }
                 return IconButton(
