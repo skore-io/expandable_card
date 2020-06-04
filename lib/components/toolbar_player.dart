@@ -83,7 +83,7 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
                 return IconButton(
                     onPressed: widget.onDownloadPress,
                     iconSize: 30,
-                    icon: Icon(Icons.file_download, color: getColor(snapshot)));
+                    icon: Icon(Icons.file_download, color: Colors.grey));
               },
             ),
             StreamBuilder<bool>(
