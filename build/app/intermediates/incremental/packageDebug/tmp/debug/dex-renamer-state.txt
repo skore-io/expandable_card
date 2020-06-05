@@ -1,4 +1,4 @@
-#Wed Dec 11 14:26:38 BRST 2019
+#Thu Jun 04 12:01:07 BRT 2020
 base.0=/Users/felipeszulcsewski/Documents/expandable_card/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
