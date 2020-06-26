@@ -12,6 +12,7 @@ class ToolbarPlayer extends StatefulWidget {
   final VoidCallback onTapEvent;
   final Stream<bool> hasDownload;
   final VoidCallback onDownloadPress;
+  final Stream<bool> outDownloaded;
 
   ToolbarPlayer({
     this.toolbarPageViewController,
@@ -24,7 +25,8 @@ class ToolbarPlayer extends StatefulWidget {
     this.outBookmark,
     this.onTapEvent,
     this.hasDownload,
-    this.onDownloadPress
+    this.onDownloadPress,
+    this.outDownloaded
   });
 
   @override
@@ -37,7 +39,7 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
   @override
   void initState() {
     tabController = TabController(length: widget.hasQuestions ? 2 : 1, vsync: this);
-    widget.toolbarPageViewController.addListener(() {
+    widget.toolbarPageViewController?.addListener(() {
       tabController.animateTo(widget.toolbarPageViewController.page.round());
     });
     super.initState();
@@ -62,7 +64,7 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
   }
 
   Color getColor(AsyncSnapshot<bool> snapshot) {
-    return snapshot.data ? widget.primaryColor : Colors.grey;
+    return snapshot.hasData && snapshot.data ? widget.primaryColor : Colors.grey;
   }
 
   @override
@@ -83,10 +85,15 @@ class _ToolbarPlayerState extends State<ToolbarPlayer> with SingleTickerProvider
                 if (!snapshot.data){
                   return SizedBox();
                 }
-                return IconButton(
-                    onPressed: widget.onDownloadPress,
-                    iconSize: 30,
-                    icon: Icon(Icons.file_download, color: Colors.grey));
+                return StreamBuilder<bool>(
+                  stream: widget.outDownloaded,
+                  builder: (context, AsyncSnapshot<bool> snapshot) {
+                    return IconButton(
+                        onPressed: widget.onDownloadPress,
+                        iconSize: 30,
+                        icon: Icon(Icons.file_download, color: getColor(snapshot)));
+                  },
+                );
               },
             ),
             StreamBuilder<bool>(
