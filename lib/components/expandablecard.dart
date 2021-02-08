@@ -22,7 +22,8 @@ class ExpandableCard extends StatefulWidget {
     this.outBookmark,
     this.hasDownload,
     this.onDownloadPress,
-    this.outDownloaded
+    this.outDownloaded,
+    this.onClosed,
   });
 
   final List<Widget> children;
@@ -44,6 +45,7 @@ class ExpandableCard extends StatefulWidget {
   final Stream<bool> hasDownload;
   final VoidCallback onDownloadPress;
   final Stream<bool> outDownloaded;
+  final Function onClosed;
 
   @override
   State<ExpandableCard> createState() {
@@ -110,6 +112,7 @@ class _ExpandableCardState extends State<ExpandableCard> with SingleTickerProvid
         _scrollPercent = 0.0;
         _cardIsExpanded = false;
       });
+      widget.onClosed?.call();
     }
     // Card Slider will not expand
     else {
